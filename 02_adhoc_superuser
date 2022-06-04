@@ -1,0 +1,17 @@
+ansible all -m apt-a update_cache=true
+# Fails as it requires sudo privileges.
+
+ansible all -m apt -a update_cache=true --become --ask-become-pass
+# Will ask for sudo password
+
+# Install a package
+ansible all -m apt -a name=vim-nox --become --ask-become-pass
+
+# package installed, so it does nothing
+ansible all -m apt -a name=snapd --become --ask-become-pass
+
+# apt upgrade snapd
+ansible all -m apt -a "name=snapd state=latest" --become --ask-become-pas
+
+# apt dist-upgrade
+ansible all -m apt -a "upgrade=dist" --become --ask-become-pass
