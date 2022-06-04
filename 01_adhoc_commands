@@ -1,0 +1,14 @@
+ansible all --key-file ~/.ssh/id_rsa -i invetory -m ping
+# This revokes the ping module of ansible
+
+ansible all -m ping
+# Above command will also revoke ping module but will only use the default values
+
+ansible all --list-hosts
+# It will list all hosts in inventory file.
+
+ansible all -m gather_facts
+# Gathers all info about all hosts in default file
+
+ansible all -m gather_facts --limit 10.100.1.1
+# This will only run on the specifie host
