@@ -1,0 +1,19 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: Update repository index
+    apt:
+      update_cache: yes
+
+  - name: install apache2 package
+    apt:
+      name: apache2
+  - name: Add PHP support for Apache 
+    apt:
+      name: libapache2-mod-php
+
+# to run the playbook
+# ansible-playbook --ask-become-pass 03_a_install_apache.yml
